@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VIEWMODELS="clr-namespace:projet.VIEWMODELS"
+             x:Class="projet.VIEWS.ProfilPage"
+             Title="Profil">
+  <ContentPage.Content>
+      <StackLayout VerticalOptions="Center">
+            <Button x:Name="ModifyProfilCommButton" Text="Modifier profil" Command="{Binding NavigateToModifyProfilCommand}"/>
+            <Image Source="{Binding Me.image}" HeightRequest="200"/>
+            <Label Text="{Binding Me.email}" x:Name="EmailProfil" />
+            <Label Text="{Binding Me.first_name}" x:Name="FirstNameProfil"/>
+            <Label Text="{Binding Me.last_name}" x:Name="LastNameProfil"/>
+            <Button x:Name="ModifyPassCommButton" Text="Modifier mot de passe" Command="{Binding NavigateToModifyPassCommand}"/>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

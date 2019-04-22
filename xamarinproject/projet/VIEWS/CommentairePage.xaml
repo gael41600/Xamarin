@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VIEWMODELS="clr-namespace:projet.VIEWMODELS"
+             x:Class="projet.VIEWS.CommentairePage"
+             Title="Ajoutez un commentaire">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="CommTexteEntry" Text="{Binding Texte}" IsTextPredictionEnabled="True" IsSpellCheckEnabled="True"/>
+            <Button x:Name="CommentaireValiderCommButton" Text="Valider" Command="{Binding NavigateToDetailCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

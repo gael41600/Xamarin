@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VIEWMODELS="clr-namespace:projet.VIEWMODELS" 
+             x:Class="projet.VIEWS.CreateAccountPage"
+             Title="Création de compte">
+  <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Email :" x:Name="yo"/>
+            <Entry Keyboard="Email" x:Name="CommEmailEntry" Text="{Binding Email}"/>
+            <Label Text="Prénom :" />
+            <Entry x:Name="CommPrenomEntry" Text="{Binding Prenom}"/>
+            <Label Text="Nom :" />
+            <Entry x:Name="CommNomEntry" Text="{Binding Nom}"/>
+            <Label Text="Mot de passe :" />
+            <Entry IsPassword="true"  x:Name="CommPasswordEntry" Text="{Binding Password}"/>
+
+            <Button x:Name="CreateAccountValiderCommButton" Text="Valider" Command="{Binding CreateAccountCommand}"/>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

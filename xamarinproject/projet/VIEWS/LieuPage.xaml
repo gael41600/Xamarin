@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mvvm:BaseContentPage   xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VIEWMODELS="clr-namespace:projet.VIEWMODELS" 
+             xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+             x:Class="projet.VIEWS.LieuPage"
+             Title="Ajouter un lieu">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="LIEU"/>
+
+            <Button x:Name="mediaButton" Text="Prendre une photo" Command="{Binding TakeAPhoto}"/>
+            <Button x:Name="galleryButton" Text="Choisir une image existante" Command="{Binding TakeAnImage}"/>
+
+            <Label Text="Nom :"/>
+            <Entry x:Name="lieuNomEntry" Text="{Binding Nom,Mode=TwoWay}" />
+
+            <Label Text="Description"/>
+            <Entry x:Name="lieuDescEntry" Text="{Binding Description, Mode=TwoWay}" IsTextPredictionEnabled="True" IsSpellCheckEnabled="True" />
+
+            <Label Text="Latitude"/>
+            <Entry x:Name="lieuLatEntry" Text="{Binding Latitude,Mode=TwoWay}"/>
+
+            <Label Text="Longitude"/>
+            <Entry x:Name="lieuLongEntry" Text="{Binding Longitude,Mode=TwoWay}"/>
+
+            <Button x:Name="LieuValiderButton" Text="Valider" Command="{Binding NavigateToMainCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</mvvm:BaseContentPage>

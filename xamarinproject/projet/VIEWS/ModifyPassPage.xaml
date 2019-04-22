@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="projet.VIEWS.ModifyPassPage"
+             Title="Modifier mot de passe">
+  <ContentPage.Content>
+      <StackLayout>
+            <Label Text="Ancien mot de passe incorrect" IsVisible="{Binding NotGood}" TextColor="Red"/>
+            <Label Text="Ancien mot de passe :" />
+            <Entry IsPassword="true" x:Name="CommOldPassEntry" Text="{Binding AncienMDP}"/>
+            <Label Text="Nouveau mot de passe :" />
+            <Entry IsPassword="true" x:Name="CommNewPassEntry" Text="{Binding NouveauMDP}"/>
+
+            <Button x:Name="ModifyPassValiderCommButton" Text="Valider" Command="{Binding ModifyPassCommand}"/>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

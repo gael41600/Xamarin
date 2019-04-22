@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:VIEWMODELS="clr-namespace:projet.VIEWMODELS" 
+             x:Class="projet.VIEWS.ConnexionPage"
+             Title="Connexion">
+    
+  <ContentPage.Content>
+      <StackLayout>
+            <Label Text="Email ou mot de passe incorrect" IsVisible="{Binding NotGood}" TextColor="Red"/>
+          
+            <Label Text="Email :" x:Name="yo"/>
+          
+            <Entry Keyboard="Email" x:Name="CommEmailEntry" Text="{Binding Email}"/>
+          
+            <Label Text="Mot de passe :" />
+          
+            <Entry IsPassword="true"  x:Name="CommPasswordEntry" Text="{Binding Password}"/>
+
+            <Button x:Name="ConnexionValiderCommButton" Text="Valider" Command="{Binding ConnexionCommand}"/>
+            <Button x:Name="ConnexionCreateAccountCommButton" Text="Créer un compte" Command="{Binding CreateAccountCommand}"/>
+        </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

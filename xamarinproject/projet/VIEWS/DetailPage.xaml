@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:MODELS="clr-namespace:projet.MODELS"
+             x:Class="projet.VIEWS.DetailPage"
+             xmlns:mvvm="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             Title="Détail">
+
+    <mvvm:BaseContentPage Icon="icon_inf.png">
+
+        <ScrollView>
+            <StackLayout Orientation="Vertical">
+                <StackLayout x:Name="stackDetail">
+                    <Label Text="{Binding SimplePlace.title}" FontSize="Large" HorizontalOptions="Center"/>
+                    <Label Text="{Binding Place.distance, StringFormat='Vous êtes à {0:0.00}km de ce lieu.'}" FontSize="11" FontAttributes="Italic" TextColor="#1b0bac"/>
+                    <Image Source="{Binding SimplePlace.image}" WidthRequest="1000" HorizontalOptions="Center"/>
+
+                    <Label Text="{Binding SimplePlace.description}" FontSize="Medium" Margin="5" />
+
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </mvvm:BaseContentPage>
+
+    <mvvm:BaseContentPage Icon="icon_map.png">
+        <StackLayout Orientation="Vertical" >
+            <maps:Map  x:Name="mymap"  HorizontalOptions="Fill"  HeightRequest="500" 
+                      MapType="Hybrid"
+                      IsShowingUser="True"
+                      />
+        </StackLayout>
+    </mvvm:BaseContentPage>
+
+    <mvvm:BaseContentPage Icon="icon_com.png">
+        <StackLayout Orientation="Vertical">
+            <ListView ItemsSource="{Binding Avis}" SelectionMode="None" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="MODELS:Commentaire">
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Margin="5">
+                                <Image Source="{Binding author.image}" HeightRequest="50"/>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding author.FullName}" FontAttributes="Bold" FontSize="14"/>
+                                        <Label Text=" - " FontAttributes="Bold" FontSize="14"/>
+                                        <Label Text="{Binding date}" FontAttributes="Italic" FontSize="10"/>
+                                        <Label Text=" " FontAttributes="Bold" FontSize="14"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding texte}"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="DetailCommentaireButton" Text="Ajouter un commentaire" Command="{Binding NavigateToCommentaireCommand}" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
+    </mvvm:BaseContentPage>
+</TabbedPage>

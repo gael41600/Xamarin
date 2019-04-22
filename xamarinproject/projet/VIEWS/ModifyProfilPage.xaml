@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="projet.VIEWS.ModifyProfilPage"
+             Title="Modifier profil"
+             >
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Center" Margin="5">
+            <Image Source="{Binding Me.image}" HeightRequest="75"/>
+
+            <StackLayout VerticalOptions="Center">
+                <Label Text="Prénom :" />
+                <Entry x:Name="CommPrenomEntry" Text="{Binding Me.first_name}"/>
+                <Label Text="Nom :" />
+                <Entry x:Name="CommNomEntry" Text="{Binding Me.last_name}"/>
+
+                <ListView ItemsSource="{Binding ImageList}" x:Name="ImageList" SelectedItem="{x:Binding Image,Mode=OneWayToSource}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Image Source="{Binding }" HeightRequest="100"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button x:Name="mediaButton" Text="Upload une photo" Command="{Binding TakeAPhoto}"/>
+                    <Button x:Name="galleryButton" Text="Upload une image" Command="{Binding TakeAnImage}"/>
+                </StackLayout>
+                
+                
+                <Button x:Name="ModifyProfilValiderCommButton" Text="Valider" Command="{Binding ModifyProfilCommand}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

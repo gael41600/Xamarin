@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mvvm1:BaseContentPage
+    xmlns:mvvm1="clr-namespace:Storm.Mvvm.Forms;assembly=Storm.Mvvm.Forms"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:VIEWMODELS="clr-namespace:projet.VIEWMODELS"
+    xmlns:MODELS="clr-namespace:projet.MODELS"
+    x:DataType="VIEWMODELS:VMMain"
+    x:Class="projet.MainPage"
+    Title="Accueil"
+    >
+    
+    <StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="MainProfilButton" Text="Profil" Command="{Binding NavigateToProfilCommand}" IsVisible="{Binding IsConnected,Mode=TwoWay}" HorizontalOptions="FillAndExpand"/>
+            <Button x:Name="MainDeconnexion" Text="Se déconnecter" Command="{Binding MainDeconnexion}" IsVisible="{Binding IsConnected,Mode=TwoWay}" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+        <Button x:Name="MainConnexion" Text="Se connecter" Command="{Binding NavigateToConnexion}" IsVisible="{Binding NotIsConnected,Mode=TwoWay}"/>
+        <Button x:Name="MainAddButton" Text="Ajouter un lieu" Command="{Binding NavigateToLieuCommand}" IsVisible="{Binding IsConnected,Mode=TwoWay}"/>
+        <ListView x:Name="list" ItemsSource="{Binding ListeLieux}" SelectedItem="{Binding SelectedItem}" RowHeight="100"  IsPullToRefreshEnabled="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="MODELS:Place">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="{Binding image}" HeightRequest="50"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{Binding title}" FontSize="17" TextColor="#f35e20"/>
+                                <Label Text="{Binding distance, StringFormat='Vous êtes à {0:0.00}km de ce lieu.'}" FontSize="11" TextColor="#1b0bac"/>
+                                <Label Text="{Binding description}" FontSize="11" TextColor="#513026" MaxLines="2"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</mvvm1:BaseContentPage>
